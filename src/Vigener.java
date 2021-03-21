@@ -11,18 +11,18 @@ public class Vigener {
         System.out.println("\n");
     }
 
-    private static String GenerateSecretKey(String StringForWork, String key){
+    private static String GenerateSecretKey(String StringForWork, String key) {
 
         StringBuilder resultKey = new StringBuilder();
 
         String withoutSpacesString = StringForWork.replaceAll("\\s+", "");
 
-        for (int i = 0; i < StringForWork.length(); i++){
-            if (i >= key.length()){
+        for (int i = 0; i < StringForWork.length(); i++) {
+            if (i >= key.length()) {
                 int CharIndex = (i - key.length()) % withoutSpacesString.length();
                 resultKey.append(withoutSpacesString.charAt(CharIndex));
             }
-            else{
+            else {
                 resultKey.append(key.charAt(i));
             }
         }
@@ -31,15 +31,15 @@ public class Vigener {
 
     }
 
-    private static int GetIndexFromAlphabet(char symbol){
+    private static int GetIndexFromAlphabet(char symbol) {
         return Alphabet.indexOf(symbol);
     }
 
-    private static char GetCharFromAlphabet(int ind){
+    private static char GetCharFromAlphabet(int ind) {
         return Alphabet.charAt(ind);
     }
 
-    private static String Encrypt(String toEncrypt, String key){
+    private static String Encrypt(String toEncrypt, String key) {
 
         StringBuilder resultText = new StringBuilder();
 
@@ -47,8 +47,7 @@ public class Vigener {
 
         String newKey = GenerateSecretKey(toEncrypt, key);
 
-        for (int i = 0; i < toEncrypt.length(); i++)
-        {
+        for (int i = 0; i < toEncrypt.length(); i++) {
             int p = GetIndexFromAlphabet(toEncrypt.charAt(i));
             int k = GetIndexFromAlphabet(newKey.charAt(i));
             int charIndex = (p + k) % AlphabetLength;
@@ -59,7 +58,7 @@ public class Vigener {
 
     }
 
-    private static String Decrypt(String toDecrypt, String key){
+    private static String Decrypt(String toDecrypt, String key) {
 
         StringBuilder resultText = new StringBuilder();
 
@@ -70,12 +69,10 @@ public class Vigener {
         for (int i = 0; i < toDecrypt.length(); i++){
             int c = GetIndexFromAlphabet(toDecrypt.charAt(i));   //Получение индекса символа шифротекста
             int k;
-            if (i >= key.length())
-            {
+            if (i >= key.length()) {
                 k = GetIndexFromAlphabet(resultText.charAt((i - key.length())));
             }
-            else
-            {
+            else {
                 k = GetIndexFromAlphabet(key.charAt(i));
             }
             NewKey += GetCharFromAlphabet(k);

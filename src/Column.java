@@ -41,14 +41,11 @@ public class Column {
 
         for (int i = 0; i < keyBuild.length(); i++) {
             int min = 0;
-            for (int j = 0; j < keyBuild.length(); j++)
-            {
-                if ((int)keyBuild.charAt(i) > (int)keyBuild.charAt(j))
-                {
+            for (int j = 0; j < keyBuild.length(); j++) {
+                if ((int)keyBuild.charAt(i) > (int)keyBuild.charAt(j)) {
                     min++;
                 }
-                else if (((int)keyBuild.charAt(i) == (int)keyBuild.charAt(j)) && (i > j))
-                {
+                else if (((int)keyBuild.charAt(i) == (int)keyBuild.charAt(j)) && (i > j)) {
                     min++;
                 }
             }
